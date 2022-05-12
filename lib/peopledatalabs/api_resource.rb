@@ -3,20 +3,28 @@ module Peopledatalabs
 
     protected
 
+    VALID_AUTOCOMPLETE_FIELDS = ['company', 'country', 'industry', 'location', 'major', 'region', 'role', 'school', 'sub_role', 'skill', 'title'].freeze
+
     def self.get(path:, headers: {}, params: {})
+      request = check(params: params, path: path)
+      return request unless request[:status] == 200
+
       response = HTTP
         .timeout(Peopledatalabs.read_timeout)
         .headers(headers)
         .get(url(path), params: query_authentication(params))
-      rate_limits(response)
+      handle_response(response)
     end
 
     def self.post(path:, headers: {}, body: {})
+      request = check(params: body, path: path)
+      return request unless request[:status] == 200
+
       response = HTTP
         .timeout(Peopledatalabs.read_timeout)
         .headers(header_authentication(headers))
         .post(url(path), json: body)
-      rate_limits(response)
+      handle_response(response)
     end
 
     def self.url(path)
@@ -41,7 +49,41 @@ module Peopledatalabs
       nil
     end
 
-    def self.rate_limits(response)
+    def self.check(params:, path:)
+      result = { status: 200 }
+
+      if !Peopledatalabs.api_key
+        result = {
+          status: 401,
+          message: 'Invalid API Key'
+        }
+      elsif !Peopledatalabs.api_base
+        result = {
+          status: 400,
+          message: 'Missing API Base Path'
+        }
+      elsif params.empty?
+        result = {
+          status: 400,
+          message: "Missing Params"
+        }
+      elsif path.include? '/search'
+        query = params['sql'] || params['query']
+        result = { status: 400, message: 'Missing searchQuery' } unless query
+      elsif path.include?'/retrieve'
+        result = { status: 400, message: 'Missing id' } unless path.match(/\/retrieve\/.+$/)
+      elsif path.include? '/autocomplete'
+        field = params['field']
+        if (!field)
+          result = { status: 400, message: 'Missing field' }
+        elsif (!VALID_AUTOCOMPLETE_FIELDS.include?(field))
+          result = { status: 400, message: "Field should be one of: #{VALID_AUTOCOMPLETE_FIELDS.join(', ')}" }
+        end
+      end
+      result
+    end
+
+    def self.handle_response(response)
       # Would prefer to keep consistent and always put it in data but right now matching the js lib response
       # {
       #   'retry_after' => to_number(response.headers['Retry-After']),
