@@ -1,6 +1,10 @@
 name: Test Package
 
-on: [pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
@@ -17,6 +21,7 @@ jobs:
         env:
           PDL_API_KEY: ${{secrets.PDL_API_KEY}}
         run: |
+          gem install bundler
           bundle install
           gem build peopledatalabs.gemspec
           gem install ./peopledatalabs-1.0.0.gem
