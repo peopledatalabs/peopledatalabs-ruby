@@ -15,6 +15,7 @@ module Peopledatalabs
     def initialize
       @api_base = "https://api.peopledatalabs.com"
       @read_timeout = 10
+      @api_key ||= ENV['PDL_API_KEY']
     end
 
   end

@@ -13,7 +13,7 @@ require 'peopledatalabs/resources/bulk'
 
 
 # gem build peopledatalabs.gemspec
-# gem install ./peopledatalabs-0.1.0.gem
+# gem install ./peopledatalabs-1.0.0.gem
 # irb
 # require 'peopledatalabs'
 
