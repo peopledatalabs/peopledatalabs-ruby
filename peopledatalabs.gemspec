@@ -10,7 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["hello@peopledatalabs.com"]
 
   spec.summary       = "Official Ruby client for the People Data Labs API."
-  spec.homepage      = "https://www.peopledatalabs.com/"
+  spec.description   = "People Data Labs builds people data. Use our dataset of 1.5 Billion unique person profiles to build products, enrich person profiles, power predictive modeling/ai, analysis, and more."
+  spec.homepage      = "https://www.peopledatalabs.com"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -19,8 +20,10 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/peopledatalabs/peopledatalabs-ruby.git"
-    spec.metadata["changelog_uri"] = "https://github.com/peopledatalabs/peopledatalabs-ruby.git"
+    spec.metadata["source_code_uri"] = "https://github.com/peopledatalabs/peopledatalabs-ruby"
+    spec.metadata["github_repo"] = "https://github.com/peopledatalabs/peopledatalabs-ruby"
+    spec.metadata["documentation_uri"] = "https://docs.peopledatalabs.com"
+    spec.metadata["bug_tracker_uri"] = "https://github.com/peopledatalabs/peopledatalabs-ruby/issues"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
