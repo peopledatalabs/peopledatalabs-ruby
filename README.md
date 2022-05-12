@@ -99,7 +99,7 @@ Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 ## 🌐 Endpoints <a name="endpoints"></a>
 
 **Person Endpoints**
-| API Endpoint | PDLJS Function |
+| API Endpoint | peopledatalabs Function |
 |-|-|
 | [Person Enrichment API](https://docs.peopledatalabs.com/docs/enrichment-api) | `Peopledatalabs::Enrichment.person(...params)` |
 | [Person Bulk Person Enrichment API](https://docs.peopledatalabs.com/docs/bulk-enrichment-api) | `Peopledatalabs::Bulk.people(...records)` |
@@ -108,13 +108,13 @@ Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 | [Person Identify API](https://docs.peopledatalabs.com/docs/identify-api) | `Peopledatalabs::Identify.person(...params)` |
 
 **Company Endpoints**
-| API Endpoint | PDLJS Function |
+| API Endpoint | peopledatalabs Function |
 |-|-|
 | [Company Enrichment API](https://docs.peopledatalabs.com/docs/company-enrichment-api) | `Peopledatalabs::Enrichment.company(...params)` |
 | [Company Search API](https://docs.peopledatalabs.com/docs/company-search-api) | `Peopledatalabs::Search.company(...params)` |
 
 **Supporting Endpoints**
-| API Endpoint | PDLJS Function |
+| API Endpoint | peopledatalabs Function |
 |-|-|
 | [Autocomplete API](https://docs.peopledatalabs.com/docs/autocomplete-api) | `Peopledatalabs::Autocomplete.retrieve(...params)` |
 | [Company Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#companyclean) | `Peopledatalabs::Cleaner.company(...params)` |
@@ -128,7 +128,7 @@ All of our API endpoints are documented at: https://docs.peopledatalabs.com/
 
 These docs describe the supported input parameters, output responses and also provide additional technical context.
 
-As illustrated in the [Endpoints](#endpoints) section above, each of our API endpoints is mapped to a specific method in the PDLJS class.  For each of these class methods, **all function inputs are mapped as input parameters to the respective API endpoint**, meaning that you can use the API documentation linked above to determine the input parameters for each endpoint.
+As illustrated in the [Endpoints](#endpoints) section above, each of our API endpoints is mapped to a specific method in the peopledatalabs class.  For each of these class methods, **all function inputs are mapped as input parameters to the respective API endpoint**, meaning that you can use the API documentation linked above to determine the input parameters for each endpoint.
 
 As an example:
 
