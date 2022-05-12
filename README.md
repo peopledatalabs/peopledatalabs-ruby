@@ -50,49 +50,49 @@ Then, send requests to any PDL API Endpoint:
 
 **Getting Person Data**
 ```ruby
-// By Enrichment
+# By Enrichment
 Peopledatalabs::Enrichment.person(params: { phone: '4155688415' })
 
-// By Bulk Enrichment
+# By Bulk Enrichment
 Peopledatalabs::Bulk.people(params: {requests: [{params: {profile: ['linkedin.com/in/seanthorne']}}, {params: {profile: ['linkedin.com/in/randrewn']}}]})
 
-// By Search (SQL)
+# By Search (SQL)
 Peopledatalabs::Search.people(searchType: 'sql', query: "SELECT * FROM person WHERE job_company_name='people data labs'")
 
-// By Search (Elasticsearch)
+# By Search (Elasticsearch)
 Peopledatalabs::Search.people(searchType: 'elastic', query: {"query": {"term": {"job_company_name": "people data labs"}}})
 
-// By PDL_ID
+# By PDL_ID
 Peopledatalabs::Retrieve.person(person_id: 'qEnOZ5Oh0poWnQ1luFBfVw_0000')
 
-// By Fuzzy Enrichment
+# By Fuzzy Enrichment
 Peopledatalabs::Identify.person(params: { name: 'sean thorne' })
 ```
 
 **Getting Company Data**
 ```ruby
-// By Enrichment
+# By Enrichment
 Peopledatalabs::Enrichment.company(params: { website: 'peopledatalabs.com' })
 
-// By Search (SQL)
+# By Search (SQL)
 Peopledatalabs::Search.company(searchType: 'sql', query: "SELECT * FROM company WHERE tags='big data' AND industry='financial services' AND location.country='united states'")
 
-// By Search (Elasticsearch)
+# By Search (Elasticsearch)
 Peopledatalabs::Search.company(searchType: 'elastic', query: {"query": "must": [{"term": {"tags": "big data"}}, {"term": {"industry": "financial services"}}, {"term": {"location_country": "united states"}}]})
 ```
 
 **Using Supporting APIs**
 ```ruby
-// Get Autocomplete Suggestions
+# Get Autocomplete Suggestions
 Peopledatalabs::Autocomplete.retrieve(field: 'title', text: 'full', size: 10)
 
-// Clean Raw Company Strings
+# Clean Raw Company Strings
 Peopledatalabs::Cleaner.company(kind: 'name', value: 'peOple DaTa LabS')
 
-// Clean Raw Location Strings
+# Clean Raw Location Strings
 Peopledatalabs::Cleaner.location(value: '455 Market Street, San Francisco, California 94105, US')
 
-// Clean Raw School Strings
+# Clean Raw School Strings
 Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 ```
 
