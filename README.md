@@ -37,11 +37,15 @@ gem 'peopledatalabs'
 
 2. And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install peopledatalabs
+```bash
+$ gem install peopledatalabs
+```
 
 3. Sign up for a [free PDL API key](https://www.peopledatalabs.com/signup)
 
