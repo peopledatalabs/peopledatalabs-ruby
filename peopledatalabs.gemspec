@@ -6,11 +6,10 @@ require "peopledatalabs/version"
 Gem::Specification.new do |spec|
   spec.name          = "peopledatalabs"
   spec.version       = Peopledatalabs::VERSION
-  spec.authors       = ["james"]
-  spec.email         = ["jamesbaez@hotmail.com"]
+  spec.authors       = ["People Data Labs"]
+  spec.email         = ["hello@peopledatalabs.com"]
 
-  spec.summary       = %q{Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = "Official Ruby client for the People Data Labs API."
   spec.homepage      = "https://www.peopledatalabs.com/"
   spec.license       = "MIT"
 
