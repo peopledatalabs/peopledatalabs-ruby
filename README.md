@@ -21,7 +21,13 @@ This is a simple Ruby client library to access the various API endpoints provide
 
 This library bundles up PDL API requests into simple function calls, making it easy to integrate into your projects. You can use the various [API endpoints](#endpoints) to access up-to-date, real-world data from our massive [Person](https://docs.peopledatalabs.com/docs/stats) and [Company](https://docs.peopledatalabs.com/docs/company-stats) Datasets.
 
-## Installation
+## Table of Contents
+- [🔧 Installation](#installation)
+- [🚀 Usage](#usage)
+- [🌐 Endpoints](#endpoints)
+- [📘 Documentation](#documentation)
+
+## Installation <a name="installation"></a>
 
 1. Add this line to your application's Gemfile:
 
@@ -39,7 +45,7 @@ Or install it yourself as:
 
 3. Sign up for a [free PDL API key](https://www.peopledatalabs.com/signup)
 
-## 🚀 Usage
+## 🚀 Usage <a name="usage"></a>
 
 First, add your API Key:
 ```ruby
