@@ -2,16 +2,14 @@
 <img src="https://i.imgur.com/S7DkZtr.png" width="250" alt="People Data Labs Logo">
 </p>
 <h1 align="center">People Data Labs Ruby Library</h1>
-<p align="center">
-Ruby client for the People Data Labs API.
-</p>
+<p align="center">Official Ruby client for the People Data Labs API.</p>
 
 <p align="center">
   <a href="">
     <img src="https://img.shields.io/badge/repo%20status-Active-limegreen" alt="Repo Status">
   </a>&nbsp;
-  <a href="https://www.npmjs.com/peopledatalabs">
-    <img src="https://img.shields.io/npm/v/peopledatalabs.svg?logo=npm&logoColor=fff&label=NPM+package&color=limegreen" alt="People Data Labs on NPM" />
+  <a href="https://rubygems.org/gems/peopledatalabs">
+    <img src="https://img.shields.io/gem/v/twilio-ruby.svg" alt="People Data Labs on RubyGems" />
   </a>&nbsp;
   <a href="">
     <img src="https://github.com/peopledatalabs/peopledatalabs-ruby/actions/workflows/test.yaml/badge.svg" alt="Tests Status" />
