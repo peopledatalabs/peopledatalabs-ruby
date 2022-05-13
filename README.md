@@ -5,13 +5,13 @@
 <p align="center">Official Ruby client for the People Data Labs API.</p>
 
 <p align="center">
-  <a href="">
+  <a href="https://github.com/peopledatalabs/peopledatalabs-ruby">
     <img src="https://img.shields.io/badge/repo%20status-Active-limegreen" alt="Repo Status">
   </a>&nbsp;
   <a href="https://rubygems.org/gems/peopledatalabs">
-    <img src="https://img.shields.io/gem/v/twilio-ruby.svg" alt="People Data Labs on RubyGems" />
+    <img src="https://img.shields.io/gem/v/peopledatalabs.svg" alt="People Data Labs on RubyGems" />
   </a>&nbsp;
-  <a href="">
+  <a href="https://github.com/peopledatalabs/peopledatalabs-ruby/actions/workflows/test.yaml">
     <img src="https://github.com/peopledatalabs/peopledatalabs-ruby/actions/workflows/test.yaml/badge.svg" alt="Tests Status" />
   </a>
 </p>
