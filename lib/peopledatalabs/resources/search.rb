@@ -26,11 +26,11 @@ module Peopledatalabs
 
       body = {
         searchType === 'sql' ? 'sql' : 'query' => query,
-        dataset => dataset,
-        size => size,
-        pretty => pretty,
-        titlecase => titlecase,
-        scroll_token => scroll_token
+        'dataset' => dataset,
+        'size' => size,
+        'pretty' => pretty,
+        'titlecase' => titlecase,
+        'scroll_token' => scroll_token
       }
 
       # TODO: possibly add gzip encoding
