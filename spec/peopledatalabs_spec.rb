@@ -83,17 +83,20 @@ RSpec.describe Peopledatalabs do
         }
       }
     }
+    let(:size){ 10 }
 
     it "should return person record for a sql" do
-      result = Peopledatalabs::Search.people(searchType: 'sql', size: 10,
+      result = Peopledatalabs::Search.people(searchType: 'sql', size: size,
                                              query: "SELECT * FROM person WHERE location_country='mexico' AND job_title_role='health'AND phone_numbers IS NOT NULL;")
       expect(result['status']).to eq(200)
+      expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
     end
 
     it "should return person record for a elastic" do
-      result = Peopledatalabs::Search.people(searchType: 'elastic', size: 10, query: elastic)
+      result = Peopledatalabs::Search.people(searchType: 'elastic', size: size, query: elastic)
       expect(result['status']).to eq(200)
+      expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
     end
 
@@ -149,17 +152,20 @@ RSpec.describe Peopledatalabs do
         }
       }
     }
+    let(:size) { 10 }
 
     it "should return company record for a sql" do
-      result = Peopledatalabs::Search.company(searchType: 'sql', size: 10,
+      result = Peopledatalabs::Search.company(searchType: 'sql', size: size,
                                               query: "SELECT * FROM company WHERE tags='big data' AND industry='financial services' AND location.country='united states';")
       expect(result['status']).to eq(200)
+      expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
     end
 
     it "should return company record for a elastic" do
-      result = Peopledatalabs::Search.company(searchType: 'elastic', size: 10, query: elastic)
+      result = Peopledatalabs::Search.company(searchType: 'elastic', size: size, query: elastic)
       expect(result['status']).to eq(200)
+      expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
     end
 
