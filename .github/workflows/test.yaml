@@ -23,6 +23,6 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          gem build peopledatalabs.gemspec
-          gem install ./peopledatalabs-1.0.0.gem
+          gem build *.gemspec
+          gem install *.gem
           rake spec
