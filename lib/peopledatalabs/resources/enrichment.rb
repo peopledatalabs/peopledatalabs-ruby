@@ -3,15 +3,13 @@
 module Peopledatalabs
   class Enrichment < APIResource
     def self.person(params:)
-      # TODO: possibly add gzip encoding
-      # headers = { 'Accept-Encoding' => 'gzip' }
-      get(path: '/v5/person/enrich', params: params)
+      headers = { 'Accept-Encoding' => 'gzip' }
+      get(path: '/v5/person/enrich', headers: headers, params: params)
     end
 
     def self.company(params:)
-      # TODO: possibly add gzip encoding
-      # headers = { 'Accept-Encoding' => 'gzip' }
-      get(path: '/v5/company/enrich', params: params)
+      headers = { 'Accept-Encoding' => 'gzip' }
+      get(path: '/v5/company/enrich', headers: headers, params: params)
     end
 
   end

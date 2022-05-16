@@ -10,9 +10,10 @@ module Peopledatalabs
       return request unless request['status'] == 200
 
       response = HTTP
-        .timeout(Peopledatalabs.read_timeout)
-        .headers(headers)
-        .get(url(path), params: query_authentication(params))
+                   .use(:auto_inflate)
+                   .timeout(Peopledatalabs.read_timeout)
+                   .headers(headers)
+                   .get(url(path), params: query_authentication(params))
       handle_response(response)
     end
 
@@ -21,9 +22,10 @@ module Peopledatalabs
       return request unless request['status'] == 200
 
       response = HTTP
-        .timeout(Peopledatalabs.read_timeout)
-        .headers(header_authentication(headers))
-        .post(url(path), json: body)
+                   .use(:auto_inflate)
+                   .timeout(Peopledatalabs.read_timeout)
+                   .headers(header_authentication(headers))
+                   .post(url(path), json: body)
       handle_response(response)
     end
 

@@ -3,9 +3,8 @@
 module Peopledatalabs
   class Identify < APIResource
     def self.person(params:)
-      # TODO: possibly add gzip encoding
-      # headers = { 'Accept-Encoding' => 'gzip' }
-      get(path: '/v5/person/identify', params: params)
+      headers = { 'Accept-Encoding' => 'gzip' }
+      get(path: '/v5/person/identify', headers: headers, params: params)
     end
   end
 end
