@@ -11,8 +11,8 @@ module Peopledatalabs
         'pretty' => pretty,
       };
 
-      # headers = { 'Accept-Encoding' => 'gzip' }
-      get(path: '/v5/autocomplete', params: params)
+      headers = { 'Accept-Encoding' => 'gzip' }
+      get(path: '/v5/autocomplete', headers: headers, params: params)
     end
   end
 end

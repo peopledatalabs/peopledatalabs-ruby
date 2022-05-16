@@ -33,9 +33,8 @@ module Peopledatalabs
         'scroll_token' => scroll_token
       }
 
-      # TODO: possibly add gzip encoding
-      # headers = { 'Accept-Encoding' => 'gzip' }
-      post(path: "/v5/#{kind}/search", body: body)
+      headers = { 'Accept-Encoding' => 'gzip' }
+      post(path: "/v5/#{kind}/search", headers: headers, body: body)
     end
   end
 end

@@ -3,9 +3,8 @@
 module Peopledatalabs
   class Bulk < APIResource
     def self.people(params:)
-      # TODO: possibly add gzip encoding
-      # headers = { 'Accept-Encoding' => 'gzip' }
-      post(path: '/v5/person/bulk', body: params)
+      headers = { 'Accept-Encoding' => 'gzip' }
+      post(path: '/v5/person/bulk', headers: headers, body: params)
     end
   end
 end
