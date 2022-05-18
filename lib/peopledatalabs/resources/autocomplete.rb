@@ -11,7 +11,10 @@ module Peopledatalabs
         'pretty' => pretty,
       };
 
-      headers = { 'Accept-Encoding' => 'gzip' }
+      headers = {
+        'Accept-Encoding' => 'gzip',
+        'User-Agent' => 'PDL-RUBY-SDK',
+      }
       get(path: '/v5/autocomplete', headers: headers, params: params)
     end
   end
