@@ -3,7 +3,10 @@
 module Peopledatalabs
   class Identify < APIResource
     def self.person(params:)
-      headers = { 'Accept-Encoding' => 'gzip' }
+      headers = {
+        'Accept-Encoding' => 'gzip',
+        'User-Agent' => 'PDL-RUBY-SDK',
+      }
       get(path: '/v5/person/identify', headers: headers, params: params)
     end
   end

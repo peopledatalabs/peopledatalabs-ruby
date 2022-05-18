@@ -33,7 +33,10 @@ module Peopledatalabs
         'scroll_token' => scroll_token
       }
 
-      headers = { 'Accept-Encoding' => 'gzip' }
+      headers = {
+        'Accept-Encoding' => 'gzip',
+        'User-Agent' => 'PDL-RUBY-SDK',
+      }
       post(path: "/v5/#{kind}/search", headers: headers, body: body)
     end
   end
