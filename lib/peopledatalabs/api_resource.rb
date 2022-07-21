@@ -99,15 +99,27 @@ module Peopledatalabs
       #   'data' => response.parse
       # }
 
+      rate_limit_remaining = response.headers['X-RateLimit-Remaining'] ? JSON.parse(response.headers['X-RateLimit-Remaining'].gsub("'",'"')) : {}
+      rate_limit_limit = response.headers['X-RateLimit-Limit'] ? JSON.parse(response.headers['X-RateLimit-Limit'].gsub("'",'"')) : {}
+
       rate_limit = {
-        'retry_after' => to_number(response.headers['Retry-After']),
-        'rate_limit' => to_number(response.headers['X-RateLimit-Limit']),
-        'rateLimit_reset' => to_number(response.headers['X-RateLimit-Reset']),
-        'total_limit' => to_number(response.headers['X-TotalLimit-Limit']),
-        'total_limit_remaining' => to_number(response.headers['X-RateLimit-Remaining']),
-        'search_limit_remaining' => to_number(response.headers['X-SearchLimit-Remaining']),
-        'enrich_company_limit_remaining' => to_number(response.headers['X-EnrichCompanyLimit-Remaining']),
-        'person_identify_limit_remaining' => to_number(response.headers['X-PersonIdentifyLimit-Remaining'])
+        'call_credits_spent' => to_number(response.headers['X-Call-Credits-Spent']),
+        'call_credits_type' => response.headers['X-Call-Credits-Type'],
+        'rate_limit_reset' => response.headers['X-RateLimit-Reset'],
+        'rate_limit_remaining' => {
+          'minute' => to_number(rate_limit_remaining['minute']),
+          'day' => to_number(rate_limit_remaining['day']),
+          'month' => to_number(rate_limit_remaining['month'])
+        },
+        'rate_limit_Limit' => {
+          'minute' => to_number(rate_limit_limit['minute']),
+          'day' => to_number(rate_limit_limit['day']),
+          'month' => to_number(rate_limit_limit['month'])
+        },
+        'lifetime_used' => to_number(response.headers['X-Lifetime-Used']),
+        'total_limit_remaining' => to_number(response.headers['X-TotalLimit-Remaining']),
+        'total_limit_purchased_remaining' => to_number(response.headers['X-TotalLimit-Purchased-Remaining']),
+        'total_limit_overages_remaining' => to_number(response.headers['X-TotalLimit-Overages-Remaining'])
       }
 
       parsed_response = response.parse
