@@ -111,7 +111,7 @@ module Peopledatalabs
           'day' => to_number(rate_limit_remaining['day']),
           'month' => to_number(rate_limit_remaining['month'])
         },
-        'rate_limit_Limit' => {
+        'rate_limit_limit' => {
           'minute' => to_number(rate_limit_limit['minute']),
           'day' => to_number(rate_limit_limit['day']),
           'month' => to_number(rate_limit_limit['month'])
