@@ -111,13 +111,13 @@ Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 
 **Using Job Title Enrichment API**
 ```ruby
-# Get Autocomplete Suggestions
+# Get Job Title Enrichment
 Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 ```
 
 **Using Skill Enrichment API**
 ```ruby
-# Get Autocomplete Suggestions
+# Get Skill Enrichment
 Peopledatalabs::Skill.retrieve(skill: 'c++')
 ```
 
