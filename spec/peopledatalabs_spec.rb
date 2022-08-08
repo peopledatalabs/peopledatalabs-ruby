@@ -155,8 +155,7 @@ RSpec.describe Peopledatalabs do
     let(:size) { 10 }
 
     it "should return company record for a sql" do
-      result = Peopledatalabs::Search.company(searchType: 'sql', size: size,
-                                              query: "SELECT * FROM company WHERE tags='big data' AND industry='financial services' AND location.country='united states';")
+      result = Peopledatalabs::Search.company(searchType: 'sql', size: size, query: "SELECT * FROM company WHERE tags='big data' AND industry='financial services' AND location.country='united states';")
       expect(result['status']).to eq(200)
       expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
@@ -172,7 +171,6 @@ RSpec.describe Peopledatalabs do
 
     it "should error" do
       result = Peopledatalabs::Search.company(searchType: nil, size: 10, query: nil)
-
       expect(result['status']).to eq(400)
       expect(result).to be_an_instance_of(Hash)
     end
@@ -192,7 +190,35 @@ RSpec.describe Peopledatalabs do
     end
   end
 
-  describe 'clearer apis' do
+  describe 'jobtitle' do
+    it "should return jobtitle record" do
+      result = Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should error" do
+      result = Peopledatalabs::JobTitle.retrieve(job_title: nil)
+      expect(result['status']).to eq(400)
+      expect(result).to be_an_instance_of(Hash)
+    end
+  end
+
+  describe 'skill' do
+    it "should return skill record" do
+      result = Peopledatalabs::Skill.retrieve(skill: 'c++')
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should error" do
+      result = Peopledatalabs::Skill.retrieve(skill: nil)
+      expect(result['status']).to eq(400)
+      expect(result).to be_an_instance_of(Hash)
+    end
+  end
+
+  describe 'cleaner apis' do
     it "it should return company cleaner records" do
       result = Peopledatalabs::Cleaner.company(kind: 'name', value: 'peopledatalabs')
       expect(result['status']).to eq(200)
