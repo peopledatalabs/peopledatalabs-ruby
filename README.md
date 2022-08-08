@@ -58,7 +58,7 @@ Peopledatalabs.api_key = 'api_key'
 
 Then, send requests to any PDL API Endpoint:
 
-**Getting Person Data**
+**Using Person APIs**
 ```ruby
 # By Enrichment
 Peopledatalabs::Enrichment.person(params: { phone: '4155688415' })
@@ -79,7 +79,7 @@ Peopledatalabs::Retrieve.person(person_id: 'qEnOZ5Oh0poWnQ1luFBfVw_0000')
 Peopledatalabs::Identify.person(params: { name: 'sean thorne' })
 ```
 
-**Getting Company Data**
+**Using Company APIs**
 ```ruby
 # By Enrichment
 Peopledatalabs::Enrichment.company(params: { website: 'peopledatalabs.com' })
@@ -91,11 +91,14 @@ Peopledatalabs::Search.company(searchType: 'sql', query: "SELECT * FROM company 
 Peopledatalabs::Search.company(searchType: 'elastic', query: {"query": "must": [{"term": {"tags": "big data"}}, {"term": {"industry": "financial services"}}, {"term": {"location_country": "united states"}}]})
 ```
 
-**Using Supporting APIs**
+**Using Autocomplete API**
 ```ruby
 # Get Autocomplete Suggestions
 Peopledatalabs::Autocomplete.retrieve(field: 'title', text: 'full', size: 10)
+```
 
+**Using Cleaner APIs**
+```ruby
 # Clean Raw Company Strings
 Peopledatalabs::Cleaner.company(kind: 'name', value: 'peOple DaTa LabS')
 
@@ -104,6 +107,18 @@ Peopledatalabs::Cleaner.location(value: '455 Market Street, San Francisco, Calif
 
 # Clean Raw School Strings
 Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
+```
+
+**Using Job Title Enrichment API**
+```ruby
+# Get Autocomplete Suggestions
+Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
+```
+
+**Using Skill Enrichment API**
+```ruby
+# Get Autocomplete Suggestions
+Peopledatalabs::Skill.retrieve(skill: 'c++')
 ```
 
 ## 🌐 Endpoints <a name="endpoints"></a>
@@ -130,7 +145,8 @@ Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 | [Company Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#companyclean) | `Peopledatalabs::Cleaner.company(...params)` |
 | [Location Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#locationclean) | `Peopledatalabs::Cleaner.location(...params)` |
 | [School Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#schoolclean) | `Peopledatalabs::Cleaner.school(...params)` |
-
+| [Job Title Enrichment API](https://docs.peopledatalabs.com/docs/job-title-enrichment-api) | `Peopledatalabs::JobTitle.retrieve(...params)` |
+| [Skill Enrichment API](https://docs.peopledatalabs.com/docs/skill-enrichment-api) | `Peopledatalabs::Skill.retrieve(...params)` |
 
 ## 📘 Documentation <a name="documentation"></a>
 
