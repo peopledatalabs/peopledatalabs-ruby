@@ -121,6 +121,12 @@ Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 Peopledatalabs::Skill.retrieve(skill: 'c++')
 ```
 
+**Using Sandbox APIs**
+```ruby
+# To enable sandbox usage, use the following flag
+Peopledatalabs.sandbox = true
+```
+
 ## 🌐 Endpoints <a name="endpoints"></a>
 
 **Person Endpoints**
