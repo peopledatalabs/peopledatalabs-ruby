@@ -254,6 +254,73 @@ RSpec.describe Peopledatalabs do
       expect(result['status']).to eq(400)
       expect(result).to be_an_instance_of(Hash)
     end
+  end
 
+  describe 'sandbox' do
+    it "should return sandbox person enrich record" do
+      Peopledatalabs.sandbox = true
+      result = Peopledatalabs::Enrichment.person(params: {  email: 'irussell@example.org' })
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should error" do
+      Peopledatalabs.sandbox = true
+      result = Peopledatalabs::Enrichment.person(params: {})
+      expect(result['status']).to eq(400)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should return sandbox person record for a phone" do
+      Peopledatalabs.sandbox = true
+      result = Peopledatalabs::Identify.person(params: { company: 'walmart' })
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should error" do
+      Peopledatalabs.sandbox = true
+      result = Peopledatalabs::Identify.person(params: {})
+      expect(result['status']).to eq(400)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    let(:elastic){
+      {
+        query: {
+          bool: {
+            must: [
+              { term: { location_country: 'mexico' } },
+            ]
+          }
+        }
+      }
+    }
+
+    let(:size){ 10 }
+
+    it "should return sandbox person record for a sql" do
+      Peopledatalabs.sandbox = true
+      result = Peopledatalabs::Search.people(searchType: 'sql', size: size, query: "SELECT * FROM person WHERE location_country='mexico';")
+      expect(result['status']).to eq(200)
+      expect(result['data'].length).to eq([result['total'], size].min)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should return sandbox person record for a elastic" do
+      Peopledatalabs.sandbox = true
+      result = Peopledatalabs::Search.people(searchType: 'elastic', size: size, query: elastic)
+      expect(result['status']).to eq(200)
+      expect(result['data'].length).to eq([result['total'], size].min)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+
+    it "should error" do
+      Peopledatalabs.sandbox = true
+      result = Peopledatalabs::Search.people(searchType: nil, size: 10, query: nil)
+      expect(result['status']).to eq(400)
+      expect(result).to be_an_instance_of(Hash)
+    end
   end
 end
