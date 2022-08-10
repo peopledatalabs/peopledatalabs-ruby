@@ -24,6 +24,7 @@ This library bundles up PDL API requests into simple function calls, making it e
 ## Table of Contents
 - [🔧 Installation](#installation)
 - [🚀 Usage](#usage)
+- [🏝 Sandbox Usage](#sandbox)
 - [🌐 Endpoints](#endpoints)
 - [📘 Documentation](#documentation)
 
@@ -121,7 +122,7 @@ Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 Peopledatalabs::Skill.retrieve(skill: 'c++')
 ```
 
-**Using Sandbox APIs**
+## 🏝 Sandbox Usage <a name="sandbox"></a>
 ```ruby
 # To enable sandbox usage, use the following flag
 Peopledatalabs.sandbox = true
