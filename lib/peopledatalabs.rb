@@ -23,6 +23,8 @@ require 'peopledatalabs/resources/skill'
 # Usage
 # First set api key
 # Peopledatalabs.api_key = 'api_key'
+# # Can set sandbox to true. Defaults to false
+# # Peopledatalabs.sandbox = false
 # Examples Calls:
 # Peopledatalabs::Cleaner.company(kind: 'website', value: 'peopledatalabs.com')
 # Peopledatalabs::Cleaner.school(kind: 'profile', value: 'linkedin.com/school/ucla')
@@ -51,8 +53,9 @@ module Peopledatalabs
     attr_reader :config
 
     def_delegators :@config, :api_key, :api_key=
-    def_delegators :@config, :api_base, :api_base=
+    def_delegators :@config, :sandbox, :sandbox=
     def_delegators :@config, :read_timeout, :read_timeout=
+    def_delegators :@config, :api_base
   end
 end
 
