@@ -65,13 +65,13 @@ Then, send requests to any PDL API Endpoint:
 Peopledatalabs::Enrichment.person(params: { phone: '4155688415' })
 
 # By Bulk Enrichment
-Peopledatalabs::Bulk.people(params: {requests: [{params: {profile: ['linkedin.com/in/seanthorne']}}, {params: {profile: ['linkedin.com/in/randrewn']}}]})
+Peopledatalabs::Bulk.person(params: {requests: [{params: {profile: ['linkedin.com/in/seanthorne']}}, {params: {profile: ['linkedin.com/in/randrewn']}}]})
 
 # By Search (SQL)
-Peopledatalabs::Search.people(searchType: 'sql', query: "SELECT * FROM person WHERE job_company_name='people data labs'")
+Peopledatalabs::Search.person(searchType: 'sql', query: "SELECT * FROM person WHERE job_company_name='people data labs'")
 
 # By Search (Elasticsearch)
-Peopledatalabs::Search.people(searchType: 'elastic', query: {"query": {"term": {"job_company_name": "people data labs"}}})
+Peopledatalabs::Search.person(searchType: 'elastic', query: {"query": {"term": {"job_company_name": "people data labs"}}})
 
 # By PDL_ID
 Peopledatalabs::Retrieve.person(person_id: 'qEnOZ5Oh0poWnQ1luFBfVw_0000')
@@ -134,7 +134,7 @@ Peopledatalabs.sandbox = true
 | API Endpoint | peopledatalabs Function |
 |-|-|
 | [Person Enrichment API](https://docs.peopledatalabs.com/docs/enrichment-api) | `Peopledatalabs::Enrichment.person(...params)` |
-| [Person Bulk Person Enrichment API](https://docs.peopledatalabs.com/docs/bulk-enrichment-api) | `Peopledatalabs::Bulk.people(...records)` |
+| [Person Bulk Person Enrichment API](https://docs.peopledatalabs.com/docs/bulk-enrichment-api) | `Peopledatalabs::Bulk.person(...records)` |
 | [Person Search API](https://docs.peopledatalabs.com/docs/search-api) | `Peopledatalabs::Search.person(...params)` |
 | [Person Retrieve API](https://docs.peopledatalabs.com/docs/person-retrieve-api) | `Peopledatalabs::Autocomplete.retrieve(...params)` |
 | [Person Identify API](https://docs.peopledatalabs.com/docs/identify-api) | `Peopledatalabs::Identify.person(...params)` |

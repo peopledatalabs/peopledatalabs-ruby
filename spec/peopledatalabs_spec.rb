@@ -57,13 +57,13 @@ RSpec.describe Peopledatalabs do
     }
 
     it "should return person records" do
-      result = Peopledatalabs::Bulk.people(params: records)
+      result = Peopledatalabs::Bulk.person(params: records)
       expect(result['items'].length).to eq(2)
       expect(result['items']).to be_an_instance_of(Array)
     end
 
     it "should error" do
-      result = Peopledatalabs::Bulk.people(params: {})
+      result = Peopledatalabs::Bulk.person(params: {})
       expect(result['status']).to eq(400)
     end
   end
@@ -86,7 +86,7 @@ RSpec.describe Peopledatalabs do
     let(:size){ 10 }
 
     it "should return person record for a sql" do
-      result = Peopledatalabs::Search.people(searchType: 'sql', size: size,
+      result = Peopledatalabs::Search.person(searchType: 'sql', size: size,
                                              query: "SELECT * FROM person WHERE location_country='mexico' AND job_title_role='health'AND phone_numbers IS NOT NULL;")
       expect(result['status']).to eq(200)
       expect(result['data'].length).to eq([result['total'], size].min)
@@ -94,7 +94,7 @@ RSpec.describe Peopledatalabs do
     end
 
     it "should return person record for a elastic" do
-      result = Peopledatalabs::Search.people(searchType: 'elastic', size: size, query: elastic)
+      result = Peopledatalabs::Search.person(searchType: 'elastic', size: size, query: elastic)
       expect(result['status']).to eq(200)
       expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
@@ -102,7 +102,7 @@ RSpec.describe Peopledatalabs do
 
 
     it "should error" do
-      result = Peopledatalabs::Search.people(searchType: nil, size: 10, query: nil)
+      result = Peopledatalabs::Search.person(searchType: nil, size: 10, query: nil)
 
       expect(result['status']).to eq(400)
       expect(result).to be_an_instance_of(Hash)
@@ -301,7 +301,7 @@ RSpec.describe Peopledatalabs do
 
     it "should return sandbox person record for a sql" do
       Peopledatalabs.sandbox = true
-      result = Peopledatalabs::Search.people(searchType: 'sql', size: size, query: "SELECT * FROM person WHERE location_country='mexico';")
+      result = Peopledatalabs::Search.person(searchType: 'sql', size: size, query: "SELECT * FROM person WHERE location_country='mexico';")
       expect(result['status']).to eq(200)
       expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
@@ -309,7 +309,7 @@ RSpec.describe Peopledatalabs do
 
     it "should return sandbox person record for a elastic" do
       Peopledatalabs.sandbox = true
-      result = Peopledatalabs::Search.people(searchType: 'elastic', size: size, query: elastic)
+      result = Peopledatalabs::Search.person(searchType: 'elastic', size: size, query: elastic)
       expect(result['status']).to eq(200)
       expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
@@ -318,7 +318,7 @@ RSpec.describe Peopledatalabs do
 
     it "should error" do
       Peopledatalabs.sandbox = true
-      result = Peopledatalabs::Search.people(searchType: nil, size: 10, query: nil)
+      result = Peopledatalabs::Search.person(searchType: nil, size: 10, query: nil)
       expect(result['status']).to eq(400)
       expect(result).to be_an_instance_of(Hash)
     end

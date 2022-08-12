@@ -15,7 +15,7 @@ require 'peopledatalabs/resources/skill'
 
 
 # gem build peopledatalabs.gemspec
-# gem install ./peopledatalabs-1.1.0.gem
+# gem install ./peopledatalabs-2.0.0.gem
 # irb
 # require 'peopledatalabs'
 # rake spec PDL_API_KEY=API_KEY
@@ -29,11 +29,11 @@ require 'peopledatalabs/resources/skill'
 # Peopledatalabs::Cleaner.company(kind: 'website', value: 'peopledatalabs.com')
 # Peopledatalabs::Cleaner.school(kind: 'profile', value: 'linkedin.com/school/ucla')
 # Peopledatalabs::Cleaner.location(value: '239 NW 13th Ave, Portland, Oregon 97209, US')
-# Peopledatalabs::Search.people(searchType: 'elastic', query: {"query": {"term": {"job_company_name": "people data labs"}}})
-# Peopledatalabs::Search.people(searchType: 'sql', query: "SELECT * FROM person WHERE job_company_name='people data labs'")
+# Peopledatalabs::Search.person(searchType: 'elastic', query: {"query": {"term": {"job_company_name": "people data labs"}}})
+# Peopledatalabs::Search.person(searchType: 'sql', query: "SELECT * FROM person WHERE job_company_name='people data labs'")
 # Peopledatalabs::Autocomplete.retrieve(field: 'school', text: 'university of michigan')
 # Peopledatalabs::Enrichment.person(params: { name: 'Jennifer C. Jackson', locality: 'Boise' })
-# Peopledatalabs::Bulk.people(params: {requests: [{params: {profile: ['linkedin.com/in/seanthorne']}}, {params: {profile: ['linkedin.com/in/randrewn']}}]})
+# Peopledatalabs::Bulk.person(params: {requests: [{params: {profile: ['linkedin.com/in/seanthorne']}}, {params: {profile: ['linkedin.com/in/randrewn']}}]})
 # Peopledatalabs::Enrichment.company(params: { name: 'Google, Inc.', ticker: 'GOOGL'})
 # Peopledatalabs::Identify.person(params: { name: 'Jennifer C. Jackson', location: 'Medford, OR USA' })
 # Peopledatalabs::Retrieve.person(person_id: 'qEnOZ5Oh0poWnQ1luFBfVw_0000')
