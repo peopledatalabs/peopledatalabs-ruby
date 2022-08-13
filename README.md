@@ -27,7 +27,7 @@ This library bundles up PDL API requests into simple function calls, making it e
 - [🏝 Sandbox Usage](#sandbox)
 - [🌐 Endpoints](#endpoints)
 - [📘 Documentation](#documentation)
-- [📘 Upgrading from v1.X.X to v2.0.0](#upgrading)
+- [⚠️ Upgrading from v1.X.X to v2.0.0](#upgrading)
 
 ## Installation <a name="installation"></a>
 
@@ -176,7 +176,7 @@ Conversely, this would be **invalid** because `fake_parameter` is not an input p
 Peopledatalabs::Identify.person(params: { fake_parameter: 'anything' })
 ```
 
-## 📘 Upgrading from v1.X.X to v2.0.0 <a name="upgrading"></a>
+## ⚠️ Upgrading from v1.X.X to v2.0.0 <a name="upgrading"></a>
 
 Bulk Person and Person Search now use .person instead of .people
 
