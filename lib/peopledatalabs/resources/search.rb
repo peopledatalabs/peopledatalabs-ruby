@@ -2,7 +2,7 @@
 
 module Peopledatalabs
   class Search < APIResource
-    def self.people(searchType:, query: , titlecase: false, dataset: 'all', size: 10, pretty: false, scroll_token: nil)
+    def self.person(searchType:, query: , titlecase: false, dataset: 'all', size: 10, pretty: false, scroll_token: nil)
       search(searchType: searchType,
              query: query,
              titlecase: titlecase,

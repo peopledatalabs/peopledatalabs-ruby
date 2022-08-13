@@ -81,6 +81,16 @@ module Peopledatalabs
         elsif (!VALID_AUTOCOMPLETE_FIELDS.include?(field))
           result = { 'status' => 400, 'message' => "Field should be one of: #{VALID_AUTOCOMPLETE_FIELDS.join(', ')}" }
         end
+      elsif path.include? '/job_title'
+        field = params['job_title']
+        if (!field)
+          result = { 'status' => 400, 'message' => 'Missing job_title' }
+        end
+      elsif path.include? '/skill'
+        field = params['skill']
+        if (!field)
+          result = { 'status' => 400, 'message' => 'Missing skill' }
+        end
       end
       result
     end

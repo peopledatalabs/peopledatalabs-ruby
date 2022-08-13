@@ -24,8 +24,10 @@ This library bundles up PDL API requests into simple function calls, making it e
 ## Table of Contents
 - [🔧 Installation](#installation)
 - [🚀 Usage](#usage)
+- [🏝 Sandbox Usage](#sandbox)
 - [🌐 Endpoints](#endpoints)
 - [📘 Documentation](#documentation)
+- [⚠️ Upgrading from v1.X.X to v2.0.0](#upgrading)
 
 ## Installation <a name="installation"></a>
 
@@ -58,19 +60,19 @@ Peopledatalabs.api_key = 'api_key'
 
 Then, send requests to any PDL API Endpoint:
 
-**Getting Person Data**
+**Using Person APIs**
 ```ruby
 # By Enrichment
 Peopledatalabs::Enrichment.person(params: { phone: '4155688415' })
 
 # By Bulk Enrichment
-Peopledatalabs::Bulk.people(params: {requests: [{params: {profile: ['linkedin.com/in/seanthorne']}}, {params: {profile: ['linkedin.com/in/randrewn']}}]})
+Peopledatalabs::Bulk.person(params: {requests: [{params: {profile: ['linkedin.com/in/seanthorne']}}, {params: {profile: ['linkedin.com/in/randrewn']}}]})
 
 # By Search (SQL)
-Peopledatalabs::Search.people(searchType: 'sql', query: "SELECT * FROM person WHERE job_company_name='people data labs'")
+Peopledatalabs::Search.person(searchType: 'sql', query: "SELECT * FROM person WHERE job_company_name='people data labs'")
 
 # By Search (Elasticsearch)
-Peopledatalabs::Search.people(searchType: 'elastic', query: {"query": {"term": {"job_company_name": "people data labs"}}})
+Peopledatalabs::Search.person(searchType: 'elastic', query: {"query": {"term": {"job_company_name": "people data labs"}}})
 
 # By PDL_ID
 Peopledatalabs::Retrieve.person(person_id: 'qEnOZ5Oh0poWnQ1luFBfVw_0000')
@@ -79,7 +81,7 @@ Peopledatalabs::Retrieve.person(person_id: 'qEnOZ5Oh0poWnQ1luFBfVw_0000')
 Peopledatalabs::Identify.person(params: { name: 'sean thorne' })
 ```
 
-**Getting Company Data**
+**Using Company APIs**
 ```ruby
 # By Enrichment
 Peopledatalabs::Enrichment.company(params: { website: 'peopledatalabs.com' })
@@ -91,11 +93,14 @@ Peopledatalabs::Search.company(searchType: 'sql', query: "SELECT * FROM company 
 Peopledatalabs::Search.company(searchType: 'elastic', query: {"query": "must": [{"term": {"tags": "big data"}}, {"term": {"industry": "financial services"}}, {"term": {"location_country": "united states"}}]})
 ```
 
-**Using Supporting APIs**
+**Using Autocomplete API**
 ```ruby
 # Get Autocomplete Suggestions
 Peopledatalabs::Autocomplete.retrieve(field: 'title', text: 'full', size: 10)
+```
 
+**Using Cleaner APIs**
+```ruby
 # Clean Raw Company Strings
 Peopledatalabs::Cleaner.company(kind: 'name', value: 'peOple DaTa LabS')
 
@@ -106,13 +111,31 @@ Peopledatalabs::Cleaner.location(value: '455 Market Street, San Francisco, Calif
 Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 ```
 
+**Using Job Title Enrichment API**
+```ruby
+# Get Job Title Enrichment
+Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
+```
+
+**Using Skill Enrichment API**
+```ruby
+# Get Skill Enrichment
+Peopledatalabs::Skill.retrieve(skill: 'c++')
+```
+
+## 🏝 Sandbox Usage <a name="sandbox"></a>
+```ruby
+# To enable sandbox usage, use the following flag
+Peopledatalabs.sandbox = true
+```
+
 ## 🌐 Endpoints <a name="endpoints"></a>
 
 **Person Endpoints**
 | API Endpoint | peopledatalabs Function |
 |-|-|
 | [Person Enrichment API](https://docs.peopledatalabs.com/docs/enrichment-api) | `Peopledatalabs::Enrichment.person(...params)` |
-| [Person Bulk Person Enrichment API](https://docs.peopledatalabs.com/docs/bulk-enrichment-api) | `Peopledatalabs::Bulk.people(...records)` |
+| [Person Bulk Person Enrichment API](https://docs.peopledatalabs.com/docs/bulk-enrichment-api) | `Peopledatalabs::Bulk.person(...records)` |
 | [Person Search API](https://docs.peopledatalabs.com/docs/search-api) | `Peopledatalabs::Search.person(...params)` |
 | [Person Retrieve API](https://docs.peopledatalabs.com/docs/person-retrieve-api) | `Peopledatalabs::Autocomplete.retrieve(...params)` |
 | [Person Identify API](https://docs.peopledatalabs.com/docs/identify-api) | `Peopledatalabs::Identify.person(...params)` |
@@ -130,7 +153,8 @@ Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 | [Company Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#companyclean) | `Peopledatalabs::Cleaner.company(...params)` |
 | [Location Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#locationclean) | `Peopledatalabs::Cleaner.location(...params)` |
 | [School Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#schoolclean) | `Peopledatalabs::Cleaner.school(...params)` |
-
+| [Job Title Enrichment API](https://docs.peopledatalabs.com/docs/job-title-enrichment-api) | `Peopledatalabs::JobTitle.retrieve(...params)` |
+| [Skill Enrichment API](https://docs.peopledatalabs.com/docs/skill-enrichment-api) | `Peopledatalabs::Skill.retrieve(...params)` |
 
 ## 📘 Documentation <a name="documentation"></a>
 
@@ -151,3 +175,10 @@ Conversely, this would be **invalid** because `fake_parameter` is not an input p
 ```ruby
 Peopledatalabs::Identify.person(params: { fake_parameter: 'anything' })
 ```
+
+## ⚠️ Upgrading from v1.X.X to v2.0.0 <a name="upgrading"></a>
+
+Bulk Person and Person Search now use .person instead of .people
+
+i.e. Peopledatalabs::Bulk.people(...records) is now Peopledatalabs::Bulk.person(...records)
+<br />i.e. Peopledatalabs::Search.people(...params) is now Peopledatalabs::Search.person(...params)

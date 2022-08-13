@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+module Peopledatalabs
+    class JobTitle < APIResource
+      def self.retrieve(job_title:, pretty: false)
+  
+        params = {
+          'job_title' => job_title,
+          'pretty' => pretty,
+        };
+  
+        headers = {
+          'Accept-Encoding' => 'gzip',
+          'User-Agent' => 'PDL-RUBY-SDK',
+        }
+        get(path: '/v5/job_title/enrich', headers: headers, params: params)
+      end
+    end
+  end
+  

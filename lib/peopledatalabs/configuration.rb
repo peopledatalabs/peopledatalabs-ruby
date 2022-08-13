@@ -3,7 +3,7 @@
 module Peopledatalabs
   class Configuration
     attr_accessor :api_key
-    attr_accessor :api_base
+    attr_accessor :sandbox
     attr_accessor :read_timeout
 
     def self.setup
@@ -13,10 +13,13 @@ module Peopledatalabs
     end
 
     def initialize
-      @api_base = "https://api.peopledatalabs.com"
       @read_timeout = 10
       @api_key ||= ENV['PDL_API_KEY']
+      @sanbox = false
     end
 
+    def api_base
+      sandbox ? 'https://sandbox.api.peopledatalabs.com' : 'https://api.peopledatalabs.com'
+    end
   end
 end

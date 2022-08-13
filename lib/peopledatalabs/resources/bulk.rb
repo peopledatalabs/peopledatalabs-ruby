@@ -2,7 +2,7 @@
 
 module Peopledatalabs
   class Bulk < APIResource
-    def self.people(params:)
+    def self.person(params:)
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
