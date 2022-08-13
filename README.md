@@ -181,4 +181,4 @@ Peopledatalabs::Identify.person(params: { fake_parameter: 'anything' })
 Bulk Person and Person Search now use .person instead of .people
 
 i.e. Peopledatalabs::Bulk.people(...records) is now Peopledatalabs::Bulk.person(...records)
-i.e. Peopledatalabs::Search.people(...params) is now Peopledatalabs::Search.person(...params)
+<br />i.e. Peopledatalabs::Search.people(...params) is now Peopledatalabs::Search.person(...params)
