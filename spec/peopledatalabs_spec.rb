@@ -218,6 +218,20 @@ RSpec.describe Peopledatalabs do
     end
   end
 
+  describe 'ip' do
+    it "should return ip record" do
+      result = Peopledatalabs::IP.retrieve(ip: '72.212.42.169')
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should error" do
+      result = Peopledatalabs::IP.retrieve(ip: nil)
+      expect(result['status']).to eq(400)
+      expect(result).to be_an_instance_of(Hash)
+    end
+  end
+
   describe 'cleaner apis' do
     it "it should return company cleaner records" do
       result = Peopledatalabs::Cleaner.company(kind: 'name', value: 'peopledatalabs')

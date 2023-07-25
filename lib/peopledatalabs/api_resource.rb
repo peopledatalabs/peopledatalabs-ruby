@@ -91,6 +91,11 @@ module Peopledatalabs
         if (!field)
           result = { 'status' => 400, 'message' => 'Missing skill' }
         end
+      elsif path.include? '/ip'
+        field = params['ip']
+        if (!field)
+          result = { 'status' => 400, 'message' => 'Missing ip' }
+        end
       end
       result
     end
