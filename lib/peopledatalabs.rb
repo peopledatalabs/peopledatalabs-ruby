@@ -12,7 +12,6 @@ require 'peopledatalabs/resources/retrieve'
 require 'peopledatalabs/resources/bulk'
 require 'peopledatalabs/resources/jobtitle'
 require 'peopledatalabs/resources/skill'
-require 'peopledatalabs/resources/ip'
 
 
 # gem build peopledatalabs.gemspec
@@ -42,7 +41,7 @@ require 'peopledatalabs/resources/ip'
 # Peopledatalabs::Search.company(searchType: 'elastic', size: 10, query: { query: { bool: { must: [{term: {location_country: 'mexico'}}, {term: {job_title_role: 'health'}}, {exists: {field: 'phone_numbers'}}]}}})
 # Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 # Peopledatalabs::Skill.retrieve(skill: 'c++')
-# Peopledatalabs::IP.retrieve(ip: '72.212.42.169')
+# Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')
 
 module Peopledatalabs
   class Error < StandardError; end

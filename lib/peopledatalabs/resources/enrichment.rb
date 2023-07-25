@@ -18,5 +18,13 @@ module Peopledatalabs
       get(path: '/v5/company/enrich', headers: headers, params: params)
     end
 
+    def self.ip(params:)
+      headers = {
+        'Accept-Encoding' => 'gzip',
+        'User-Agent' => 'PDL-RUBY-SDK',
+      }
+      get(path: '/v5/ip/enrich', headers: headers, params: params)
+    end
+
   end
 end
