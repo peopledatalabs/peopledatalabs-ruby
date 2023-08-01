@@ -15,7 +15,7 @@ require 'peopledatalabs/resources/skill'
 
 
 # gem build peopledatalabs.gemspec
-# gem install ./peopledatalabs-2.0.2.gem
+# gem install ./peopledatalabs-2.1.0.gem
 # irb
 # require 'peopledatalabs'
 # rake spec PDL_API_KEY=API_KEY
@@ -41,6 +41,7 @@ require 'peopledatalabs/resources/skill'
 # Peopledatalabs::Search.company(searchType: 'elastic', size: 10, query: { query: { bool: { must: [{term: {location_country: 'mexico'}}, {term: {job_title_role: 'health'}}, {exists: {field: 'phone_numbers'}}]}}})
 # Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 # Peopledatalabs::Skill.retrieve(skill: 'c++')
+# Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')
 
 module Peopledatalabs
   class Error < StandardError; end

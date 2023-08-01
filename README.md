@@ -123,6 +123,12 @@ Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 Peopledatalabs::Skill.retrieve(skill: 'c++')
 ```
 
+**Using IP Enrichment API**
+```ruby
+# Get IP Enrichment
+Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')
+```
+
 ## 🏝 Sandbox Usage <a name="sandbox"></a>
 ```ruby
 # To enable sandbox usage, use the following flag
@@ -145,6 +151,11 @@ Peopledatalabs.sandbox = true
 |-|-|
 | [Company Enrichment API](https://docs.peopledatalabs.com/docs/company-enrichment-api) | `Peopledatalabs::Enrichment.company(...params)` |
 | [Company Search API](https://docs.peopledatalabs.com/docs/company-search-api) | `Peopledatalabs::Search.company(...params)` |
+
+**IP Endpoints**
+| API Endpoint | peopledatalabs Function |
+|-|-|
+| [IP Enrichment API](https://docs.peopledatalabs.com/docs/ip-enrichment-api) | `Peopledatalabs::Enrichment.ip(...params)` |
 
 **Supporting Endpoints**
 | API Endpoint | peopledatalabs Function |
