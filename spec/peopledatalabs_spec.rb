@@ -247,6 +247,13 @@ RSpec.describe Peopledatalabs do
       expect(result['data']['person']).to be_an_instance_of(Hash)
     end
 
+    it "should return ip record with unmatched" do
+      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.168', return_if_unmatched: true)
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+      expect(result['data']['ip']['location']).to be_an_instance_of(Hash)
+    end
+
     it "should error" do
       result = Peopledatalabs::Enrichment.ip(ip: nil)
       expect(result['status']).to eq(400)

@@ -24,6 +24,7 @@ module Peopledatalabs
         'return_ip_location' => return_ip_location,
         'return_ip_metadata' => return_ip_metadata,
         'return_person' => return_person,
+        'return_if_unmatched' => return_if_unmatched,
       }
       headers = {
         'Accept-Encoding' => 'gzip',
