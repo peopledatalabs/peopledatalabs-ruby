@@ -18,12 +18,13 @@ module Peopledatalabs
       get(path: '/v5/company/enrich', headers: headers, params: params)
     end
 
-    def self.ip(ip:, return_ip_location: false, return_ip_metadata: false, return_person: false)
+    def self.ip(ip:, return_ip_location: false, return_ip_metadata: false, return_person: false, return_if_unmatched: false)
       params = {
         'ip' => ip,
         'return_ip_location' => return_ip_location,
         'return_ip_metadata' => return_ip_metadata,
         'return_person' => return_person,
+        'return_if_unmatched' => return_if_unmatched,
       }
       headers = {
         'Accept-Encoding' => 'gzip',

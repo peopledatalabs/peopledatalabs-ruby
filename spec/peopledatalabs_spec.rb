@@ -237,7 +237,7 @@ RSpec.describe Peopledatalabs do
       result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.169', return_ip_metadata: true)
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
-      expect(result['data']['ip']['location']).to be_an_instance_of(Hash)
+      expect(result['data']['ip']['metadata']).to be_an_instance_of(Hash)
     end
 
     it "should return ip record with person" do
@@ -245,6 +245,13 @@ RSpec.describe Peopledatalabs do
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
       expect(result['data']['person']).to be_an_instance_of(Hash)
+    end
+
+    it "should return ip record with unmatched" do
+      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.168', return_if_unmatched: true, return_ip_location: true)
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+      expect(result['data']['ip']['location']).to be_an_instance_of(Hash)
     end
 
     it "should error" do
@@ -256,7 +263,7 @@ RSpec.describe Peopledatalabs do
 
   describe 'cleaner apis' do
     it "it should return company cleaner records" do
-      result = Peopledatalabs::Cleaner.company(kind: 'name', value: 'peopledatalabs')
+      result = Peopledatalabs::Cleaner.company(kind: 'name', value: 'twitter')
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
     end
