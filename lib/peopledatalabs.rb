@@ -15,7 +15,7 @@ require 'peopledatalabs/resources/skill'
 
 
 # gem build peopledatalabs.gemspec
-# gem install ./peopledatalabs-2.1.1.gem
+# gem install ./peopledatalabs-2.2.0.gem
 # irb
 # require 'peopledatalabs'
 # rake spec PDL_API_KEY=API_KEY
