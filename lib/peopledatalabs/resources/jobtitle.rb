@@ -2,11 +2,12 @@
 
 module Peopledatalabs
     class JobTitle < APIResource
-      def self.retrieve(job_title:, pretty: false)
+      def self.retrieve(job_title:, pretty: false, titlecase: false)
   
         params = {
           'job_title' => job_title,
           'pretty' => pretty,
+          'titlecase' => titlecase,
         };
   
         headers = {
