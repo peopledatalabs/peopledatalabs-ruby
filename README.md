@@ -86,6 +86,9 @@ Peopledatalabs::Identify.person(params: { name: 'sean thorne' })
 # By Enrichment
 Peopledatalabs::Enrichment.company(params: { website: 'peopledatalabs.com' })
 
+# By Bulk Enrichment
+Peopledatalabs::Bulk.company(params: {requests: [{params: {profile: ['linkedin.com/company/peopledatalabs']}}, {params: {profile: ['linkedin.com/company/apple']}}]})
+
 # By Search (SQL)
 Peopledatalabs::Search.company(searchType: 'sql', query: "SELECT * FROM company WHERE tags='big data' AND industry='financial services' AND location.country='united states'")
 
@@ -150,6 +153,7 @@ Peopledatalabs.sandbox = true
 | API Endpoint | peopledatalabs Function |
 |-|-|
 | [Company Enrichment API](https://docs.peopledatalabs.com/docs/company-enrichment-api) | `Peopledatalabs::Enrichment.company(...params)` |
+| [Company Bulk Enrichment API](https://docs.peopledatalabs.com/docs/bulk-company-enrichment-api) | `Peopledatalabs::Bulk.company(...params)` |
 | [Company Search API](https://docs.peopledatalabs.com/docs/company-search-api) | `Peopledatalabs::Search.company(...params)` |
 
 **IP Endpoints**

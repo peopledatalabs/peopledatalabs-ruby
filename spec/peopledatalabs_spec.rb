@@ -139,6 +139,36 @@ RSpec.describe Peopledatalabs do
     end
   end
 
+  describe 'company bulk' do
+    let(:records) {
+      {
+        requests: [
+          {
+            params: {
+              profile: ['linkedin.com/company/peopledatalabs'],
+            },
+          },
+          {
+            params: {
+              profile: ['linkedin.com/company/apple'],
+            },
+          },
+        ],
+      }
+    }
+
+    it "should return company records" do
+      result = Peopledatalabs::Bulk.company(params: records)
+      expect(result['items'].length).to eq(2)
+      expect(result['items']).to be_an_instance_of(Array)
+    end
+
+    it "should error" do
+      result = Peopledatalabs::Bulk.company(params: {})
+      expect(result['status']).to eq(400)
+    end
+  end
+
   describe 'company search' do
 
     let(:elastic){
