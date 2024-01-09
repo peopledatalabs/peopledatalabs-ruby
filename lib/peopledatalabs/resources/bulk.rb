@@ -9,5 +9,13 @@ module Peopledatalabs
       }
       post(path: '/v5/person/bulk', headers: headers, body: params)
     end
+
+    def self.company(params:)
+      headers = {
+        'Accept-Encoding' => 'gzip',
+        'User-Agent' => 'PDL-RUBY-SDK',
+      }
+      post(path: '/v5/company/enrich/bulk', headers: headers, body: params)
+    end
   end
 end
