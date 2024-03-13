@@ -2,7 +2,7 @@
 
 module Peopledatalabs
   class Autocomplete < APIResource
-    def self.retrieve(field:, text: '', size: 10, pretty: false, titlecase: false, beta: false)
+    def self.retrieve(field:, text: '', size: 10, pretty: false, titlecase: false)
 
       params = {
         'field' => field,
@@ -10,7 +10,6 @@ module Peopledatalabs
         'size' => size,
         'pretty' => pretty,
         'titlecase' => titlecase,
-        'beta' => beta,
       };
 
       headers = {
