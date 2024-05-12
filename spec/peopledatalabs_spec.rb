@@ -332,7 +332,7 @@ RSpec.describe Peopledatalabs do
   describe 'sandbox' do
     it "should return sandbox person enrich record" do
       Peopledatalabs.sandbox = true
-      result = Peopledatalabs::Enrichment.person(params: {  email: 'irussell@example.org' })
+      result = Peopledatalabs::Enrichment.person(params: {  email: 'reneewillis74@aol.com' })
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
     end
@@ -346,7 +346,7 @@ RSpec.describe Peopledatalabs do
 
     it "should return sandbox person record for a phone" do
       Peopledatalabs.sandbox = true
-      result = Peopledatalabs::Identify.person(params: { company: 'walmart' })
+      result = Peopledatalabs::Identify.person(params: { company: 'adams group' })
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
     end
@@ -363,7 +363,7 @@ RSpec.describe Peopledatalabs do
         query: {
           bool: {
             must: [
-              { term: { location_country: 'mexico' } },
+              { term: { location_country: 'united states' } },
             ]
           }
         }
@@ -374,7 +374,7 @@ RSpec.describe Peopledatalabs do
 
     it "should return sandbox person record for a sql" do
       Peopledatalabs.sandbox = true
-      result = Peopledatalabs::Search.person(searchType: 'sql', size: size, query: "SELECT * FROM person WHERE location_country='mexico';")
+      result = Peopledatalabs::Search.person(searchType: 'sql', size: size, query: "SELECT * FROM person WHERE location_country='united states';")
       expect(result['status']).to eq(200)
       expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
