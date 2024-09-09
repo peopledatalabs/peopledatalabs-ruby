@@ -1,6 +1,6 @@
 RSpec.describe Peopledatalabs do
 
-  let(:phone) { '4155688415' }
+  let(:email) { 'varun@peopledatalabs.com' }
 
   it "has a version number" do
     expect(Peopledatalabs::VERSION).not_to be nil
@@ -11,8 +11,14 @@ RSpec.describe Peopledatalabs do
   end
 
   describe 'person enrichment' do
-    it "should return person record for a phone" do
-      result = Peopledatalabs::Enrichment.person(params: { phone: phone })
+    it "should return person record for a email" do
+      result = Peopledatalabs::Enrichment.person(params: { email: email })
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should return person record for a email with updated title roles" do
+      result = Peopledatalabs::Enrichment.person(params: { email: email, updated_title_roles: true })
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
     end
@@ -25,8 +31,8 @@ RSpec.describe Peopledatalabs do
   end
 
   describe 'person identity' do
-    it "should return person record for a phone" do
-      result = Peopledatalabs::Identify.person(params: { phone: phone })
+    it "should return person record for a email" do
+      result = Peopledatalabs::Identify.person(params: { email: email })
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
     end
@@ -284,6 +290,13 @@ RSpec.describe Peopledatalabs do
       expect(result['data']['ip']['location']).to be_an_instance_of(Hash)
     end
 
+    it "should return ip record with very high confidence" do
+      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.168', return_if_unmatched: true, return_ip_location: true, min_confidence: 'very high')
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+      expect(result['data']['ip']['location']).to be_an_instance_of(Hash)
+    end
+
     it "should error" do
       result = Peopledatalabs::Enrichment.ip(ip: nil)
       expect(result['status']).to eq(400)
@@ -344,7 +357,7 @@ RSpec.describe Peopledatalabs do
       expect(result).to be_an_instance_of(Hash)
     end
 
-    it "should return sandbox person record for a phone" do
+    it "should return sandbox person record for a company name" do
       Peopledatalabs.sandbox = true
       result = Peopledatalabs::Identify.person(params: { company: 'adams group' })
       expect(result['status']).to eq(200)
@@ -387,7 +400,6 @@ RSpec.describe Peopledatalabs do
       expect(result['data'].length).to eq([result['total'], size].min)
       expect(result).to be_an_instance_of(Hash)
     end
-
 
     it "should error" do
       Peopledatalabs.sandbox = true
