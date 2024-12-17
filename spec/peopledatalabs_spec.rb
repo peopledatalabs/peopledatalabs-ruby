@@ -219,6 +219,12 @@ RSpec.describe Peopledatalabs do
       expect(result).to be_an_instance_of(Hash)
     end
 
+    it "should return autocomplete record for class" do
+      result = Peopledatalabs::Autocomplete.retrieve(field: 'class', text: 'product', size: 10, updated_title_roles: true)
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
     it "should error" do
       result = Peopledatalabs::Autocomplete.retrieve(field: nil)
       expect(result['status']).to eq(400)
