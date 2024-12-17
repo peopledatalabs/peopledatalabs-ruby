@@ -220,7 +220,7 @@ RSpec.describe Peopledatalabs do
     end
 
     it "should return autocomplete record for class" do
-      result = Peopledatalabs::Autocomplete.retrieve(field: 'class', text: 'product', size: 10, updated_title_roles: true)
+      result = Peopledatalabs::Autocomplete.retrieve(field: 'class', text: 'sales', size: 10, updated_title_roles: true)
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
     end
