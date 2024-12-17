@@ -3,7 +3,7 @@ module Peopledatalabs
 
     protected
 
-    VALID_AUTOCOMPLETE_FIELDS = ['company', 'country', 'industry', 'location', 'major', 'region', 'role', 'school', 'sub_role', 'skill', 'title'].freeze
+    VALID_AUTOCOMPLETE_FIELDS = ['class', 'company', 'country', 'industry', 'location', 'major', 'region', 'role', 'school', 'sub_role', 'skill', 'title'].freeze
 
     def self.get(path:, headers: {}, params: {})
       request = check(params: params, path: path)
