@@ -9,22 +9,20 @@ module Peopledatalabs
              dataset: dataset, size: size,
              pretty: pretty,
              scroll_token: scroll_token,
-             updated_title_roles: updated_title_roles,
              kind: 'person')
     end
 
-    def self.company(searchType:, query: , titlecase: false, dataset: 'all', size: 10, pretty: false, scroll_token: nil, updated_title_roles: false)
+    def self.company(searchType:, query: , titlecase: false, dataset: 'all', size: 10, pretty: false, scroll_token: nil)
       search(searchType: searchType,
              query: query,
              titlecase: titlecase,
              dataset: dataset, size: size,
              pretty: pretty,
              scroll_token: scroll_token,
-             updated_title_roles: updated_title_roles,
              kind: 'company')
     end
 
-    def self.search(searchType:, query:, kind:, titlecase: false, dataset: 'all', size: 10, pretty: false, scroll_token: nil, updated_title_roles: false)
+    def self.search(searchType:, query:, kind:, titlecase: false, dataset: 'all', size: 10, pretty: false, scroll_token: nil)
 
       body = {
         searchType === 'sql' ? 'sql' : 'query' => query,
@@ -33,7 +31,6 @@ module Peopledatalabs
         'pretty' => pretty,
         'titlecase' => titlecase,
         'scroll_token' => scroll_token,
-        'updated_title_roles' => updated_title_roles
       }
 
       headers = {
