@@ -17,12 +17,6 @@ RSpec.describe Peopledatalabs do
       expect(result).to be_an_instance_of(Hash)
     end
 
-    it "should return person record for a email with updated title roles" do
-      result = Peopledatalabs::Enrichment.person(params: { email: email, updated_title_roles: true })
-      expect(result['status']).to eq(200)
-      expect(result).to be_an_instance_of(Hash)
-    end
-
     it "should error" do
       result = Peopledatalabs::Enrichment.person(params: {})
       expect(result['status']).to eq(400)
@@ -220,7 +214,7 @@ RSpec.describe Peopledatalabs do
     end
 
     it "should return autocomplete record for class" do
-      result = Peopledatalabs::Autocomplete.retrieve(field: 'class', text: 'sales', size: 10, updated_title_roles: true)
+      result = Peopledatalabs::Autocomplete.retrieve(field: 'class', text: 'sales', size: 10)
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
     end
