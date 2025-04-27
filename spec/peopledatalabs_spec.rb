@@ -240,20 +240,6 @@ RSpec.describe Peopledatalabs do
     end
   end
 
-  describe 'skill' do
-    it "should return skill record" do
-      result = Peopledatalabs::Skill.retrieve(skill: 'c++')
-      expect(result['status']).to eq(200)
-      expect(result).to be_an_instance_of(Hash)
-    end
-
-    it "should error" do
-      result = Peopledatalabs::Skill.retrieve(skill: nil)
-      expect(result['status']).to eq(400)
-      expect(result).to be_an_instance_of(Hash)
-    end
-  end
-
   describe 'ip' do
     it "should return ip record" do
       result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')

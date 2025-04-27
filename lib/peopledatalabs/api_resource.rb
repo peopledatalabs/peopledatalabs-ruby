@@ -86,11 +86,6 @@ module Peopledatalabs
         if (!field)
           result = { 'status' => 400, 'message' => 'Missing job_title' }
         end
-      elsif path.include? '/skill'
-        field = params['skill']
-        if (!field)
-          result = { 'status' => 400, 'message' => 'Missing skill' }
-        end
       elsif path.include? '/ip'
         field = params['ip']
         if (!field)

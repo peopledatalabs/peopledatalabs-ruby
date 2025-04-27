@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://www.peopledatalabs.com/images/company-logo.png" style="background-color: white; padding: 5px 10px;" width="250" alt="People Data Labs Logo">
+<img src="https://www.peopledatalabs.com/images/logos/company-logo.png" style="background-color: white; padding: 5px 10px;" width="250" alt="People Data Labs Logo">
 </p>
 <h1 align="center">People Data Labs Ruby Library</h1>
 <p align="center">Official Ruby client for the People Data Labs API.</p>
@@ -120,12 +120,6 @@ Peopledatalabs::Cleaner.school(kind: 'name', value: 'university of oregon')
 Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 ```
 
-**Using Skill Enrichment API**
-```ruby
-# Get Skill Enrichment
-Peopledatalabs::Skill.retrieve(skill: 'c++')
-```
-
 **Using IP Enrichment API**
 ```ruby
 # Get IP Enrichment
@@ -169,7 +163,6 @@ Peopledatalabs.sandbox = true
 | [Location Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#locationclean) | `Peopledatalabs::Cleaner.location(...params)` |
 | [School Cleaner API](https://docs.peopledatalabs.com/docs/cleaner-apis#schoolclean) | `Peopledatalabs::Cleaner.school(...params)` |
 | [Job Title Enrichment API](https://docs.peopledatalabs.com/docs/job-title-enrichment-api) | `Peopledatalabs::JobTitle.retrieve(...params)` |
-| [Skill Enrichment API](https://docs.peopledatalabs.com/docs/skill-enrichment-api) | `Peopledatalabs::Skill.retrieve(...params)` |
 
 ## 📘 Documentation <a name="documentation"></a>
 

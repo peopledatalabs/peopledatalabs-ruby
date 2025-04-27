@@ -11,7 +11,6 @@ require 'peopledatalabs/resources/identify'
 require 'peopledatalabs/resources/retrieve'
 require 'peopledatalabs/resources/bulk'
 require 'peopledatalabs/resources/jobtitle'
-require 'peopledatalabs/resources/skill'
 
 
 # gem build peopledatalabs.gemspec
@@ -40,7 +39,6 @@ require 'peopledatalabs/resources/skill'
 # Peopledatalabs::Search.company(searchType: 'sql', size: 10, query: "SELECT * FROM company WHERE tags='big data' AND industry='financial services' AND location.country='united states';")
 # Peopledatalabs::Search.company(searchType: 'elastic', size: 10, query: { query: { bool: { must: [{term: {location_country: 'mexico'}}, {term: {job_title_role: 'health'}}, {exists: {field: 'phone_numbers'}}]}}})
 # Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
-# Peopledatalabs::Skill.retrieve(skill: 'c++')
 # Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')
 
 module Peopledatalabs
