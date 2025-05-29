@@ -219,6 +219,12 @@ RSpec.describe Peopledatalabs do
       expect(result).to be_an_instance_of(Hash)
     end
 
+    it "should return autocomplete record for all_locaiton" do
+      result = Peopledatalabs::Autocomplete.retrieve(field: 'all_location', text: 'miami', size: 10)
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
     it "should error" do
       result = Peopledatalabs::Autocomplete.retrieve(field: nil)
       expect(result['status']).to eq(400)
