@@ -91,6 +91,14 @@ module Peopledatalabs
         if (!field)
           result = { 'status' => 400, 'message' => 'Missing ip' }
         end
+      elsif path.include? '/changelog'
+        current_version = params['current_version']
+        origin_version = params['origin_version']
+        if !current_version || !origin_version
+          result = { 'status' => 400, 'message' => 'Missing current_version or origin_version' }
+        elsif !params['ids'] && !params['type']
+          result = { 'status' => 400, 'message' => 'Missing ids or type' }
+        end
       end
       result
     end
