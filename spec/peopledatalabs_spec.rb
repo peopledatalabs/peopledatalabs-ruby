@@ -125,6 +125,27 @@ RSpec.describe Peopledatalabs do
   end
 
 
+  describe 'person changelog' do
+    it "should return changelog records" do
+      result = Peopledatalabs::Changelog.person(params: {
+        current_version: '31.0',
+        origin_version: '30.2',
+        type: 'updated',
+      })
+      expect(result).to have_key('data')
+      expect(result['data']['type']).to eq('updated')
+    end
+
+    it "should error" do
+      result = Peopledatalabs::Changelog.person(params: {
+        current_version: '31.0',
+        origin_version: '30.2'
+      })
+      expect(result['status']).to eq(400)
+    end
+  end
+
+
   describe 'company enrichment' do
     it "should return company record for a website" do
       result = Peopledatalabs::Enrichment.company(params: { website: 'peopledatalabs.com' })

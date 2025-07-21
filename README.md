@@ -79,6 +79,9 @@ Peopledatalabs::Retrieve.person(person_id: 'qEnOZ5Oh0poWnQ1luFBfVw_0000')
 
 # By Fuzzy Enrichment
 Peopledatalabs::Identify.person(params: { name: 'sean thorne' })
+
+# By Changelog
+Peopledatalabs::Changelog.person(params: { current_version: '31.0', origin_version: '30.2', type: 'updated' })
 ```
 
 **Using Company APIs**
@@ -142,6 +145,7 @@ Peopledatalabs.sandbox = true
 | [Person Search API](https://docs.peopledatalabs.com/docs/search-api) | `Peopledatalabs::Search.person(...params)` |
 | [Person Retrieve API](https://docs.peopledatalabs.com/docs/person-retrieve-api) | `Peopledatalabs::Autocomplete.retrieve(...params)` |
 | [Person Identify API](https://docs.peopledatalabs.com/docs/identify-api) | `Peopledatalabs::Identify.person(...params)` |
+| [Person Changelog API](https://docs.peopledatalabs.com/docs/person-changelog-api) | `Peopledatalabs::Changelog.person(...params)` |
 
 **Company Endpoints**
 | API Endpoint | peopledatalabs Function |
