@@ -6,6 +6,7 @@ module Peopledatalabs
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
+        'SDK-Version' => Peopledatalabs::VERSION,
       }
 
       stringified_params = params.transform_keys(&:to_s)

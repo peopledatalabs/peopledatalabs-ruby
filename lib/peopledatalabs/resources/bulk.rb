@@ -6,6 +6,7 @@ module Peopledatalabs
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
+        'SDK-Version' => Peopledatalabs::VERSION,
       }
       post(path: '/v5/person/bulk', headers: headers, body: params)
     end
@@ -14,6 +15,7 @@ module Peopledatalabs
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
+        'SDK-Version' => Peopledatalabs::VERSION,
       }
       post(path: '/v5/company/enrich/bulk', headers: headers, body: params)
     end
