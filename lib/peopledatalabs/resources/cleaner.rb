@@ -6,6 +6,7 @@ module Peopledatalabs
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
+        'SDK-Version' => Peopledatalabs::VERSION,
       }
       get(path: '/v5/company/clean', headers: headers, params: { kind => value })
     end
@@ -14,6 +15,7 @@ module Peopledatalabs
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
+        'SDK-Version' => Peopledatalabs::VERSION,
       }
       get(path: '/v5/school/clean', headers: headers, params: { kind => value })
     end
@@ -22,6 +24,7 @@ module Peopledatalabs
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
+        'SDK-Version' => Peopledatalabs::VERSION,
       }
       get(path: '/v5/location/clean', headers: headers, params: { 'location' => value })
     end

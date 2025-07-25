@@ -15,6 +15,7 @@ module Peopledatalabs
       headers = {
         'Accept-Encoding' => 'gzip',
         'User-Agent' => 'PDL-RUBY-SDK',
+        'SDK-Version' => Peopledatalabs::VERSION,
       }
       get(path: '/v5/autocomplete', headers: headers, params: params)
     end
