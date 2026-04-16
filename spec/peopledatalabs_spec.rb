@@ -267,6 +267,50 @@ RSpec.describe Peopledatalabs do
     end
   end
 
+  describe 'job_posting search' do
+    let(:elastic) {
+      {
+        query: {
+          bool: {
+            must: [
+              { term: { title_role: 'engineering' } },
+              { term: { remote_work_policy: 'remote' } },
+            ]
+          }
+        }
+      }
+    }
+    let(:size) { 10 }
+
+    it "should return job posting records for an elastic query" do
+      result = Peopledatalabs::JobPosting.search(query: elastic, size: size)
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should return job posting records for field-based params" do
+      result = Peopledatalabs::JobPosting.search(
+        title_role: 'engineering',
+        remote_work_policy: 'remote',
+        size: size,
+      )
+      expect(result['status']).to eq(200)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should error on no params" do
+      result = Peopledatalabs::JobPosting.search
+      expect(result['status']).to eq(400)
+      expect(result).to be_an_instance_of(Hash)
+    end
+
+    it "should error when size is out of range" do
+      result = Peopledatalabs::JobPosting.search(title_role: 'engineering', size: 101)
+      expect(result['status']).to eq(400)
+      expect(result['message']).to include('size must be between 1 and 100')
+    end
+  end
+
   describe 'ip' do
     it "should return ip record" do
       result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')

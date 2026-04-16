@@ -129,6 +129,30 @@ Peopledatalabs::JobTitle.retrieve(job_title: 'data scientist')
 Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')
 ```
 
+**Using Job Posting Search API**
+```ruby
+# By Search (Elasticsearch)
+es_query = {
+  query: {
+    bool: {
+      must: [
+        { term: { title_role: 'engineering' } },
+        { term: { remote_work_policy: 'remote' } },
+      ]
+    }
+  }
+}
+Peopledatalabs::JobPosting.search(query: es_query, size: 10)
+
+# By Search (Field Parameters)
+Peopledatalabs::JobPosting.search(
+  title_role: 'engineering',
+  remote_work_policy: 'remote',
+  is_active: true,
+  size: 10,
+)
+```
+
 ## 🏝 Sandbox Usage <a name="sandbox"></a>
 ```ruby
 # To enable sandbox usage, use the following flag
@@ -153,6 +177,11 @@ Peopledatalabs.sandbox = true
 | [Company Enrichment API](https://docs.peopledatalabs.com/docs/company-enrichment-api) | `Peopledatalabs::Enrichment.company(...params)` |
 | [Company Bulk Enrichment API](https://docs.peopledatalabs.com/docs/bulk-company-enrichment-api) | `Peopledatalabs::Bulk.company(...params)` |
 | [Company Search API](https://docs.peopledatalabs.com/docs/company-search-api) | `Peopledatalabs::Search.company(...params)` |
+
+**Job Posting Endpoints**
+| API Endpoint | peopledatalabs Function |
+|-|-|
+| [Job Posting Search API](https://docs.peopledatalabs.com/docs/job-posting-search-api) | `Peopledatalabs::JobPosting.search(...params)` |
 
 **IP Endpoints**
 | API Endpoint | peopledatalabs Function |
