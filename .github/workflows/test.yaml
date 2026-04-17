@@ -22,7 +22,7 @@ jobs:
         env:
           PDL_API_KEY: ${{secrets.PDL_API_KEY}}
         run: |
-          gem install bundler
+          gem install bundler -v "~> 2.4"
           bundle install
           gem build *.gemspec
           gem install *.gem
