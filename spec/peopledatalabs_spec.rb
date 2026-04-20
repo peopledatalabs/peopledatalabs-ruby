@@ -128,8 +128,8 @@ RSpec.describe Peopledatalabs do
   describe 'person changelog' do
     it "should return changelog records" do
       result = Peopledatalabs::Changelog.person(params: {
-        current_version: '31.0',
-        origin_version: '30.2',
+        current_version: '33.2',
+        origin_version: '33.1',
         type: 'updated',
       })
       expect(result).to have_key('data')
@@ -138,8 +138,8 @@ RSpec.describe Peopledatalabs do
 
     it "should error" do
       result = Peopledatalabs::Changelog.person(params: {
-        current_version: '31.0',
-        origin_version: '30.2'
+        current_version: '33.2',
+        origin_version: '33.1'
       })
       expect(result['status']).to eq(400)
     end
@@ -274,7 +274,6 @@ RSpec.describe Peopledatalabs do
           bool: {
             must: [
               { term: { title_role: 'engineering' } },
-              { term: { remote_work_policy: 'remote' } },
             ]
           }
         }
@@ -313,28 +312,28 @@ RSpec.describe Peopledatalabs do
 
   describe 'ip' do
     it "should return ip record" do
-      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.169')
+      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.228')
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
       expect(result['data']['company']).to be_an_instance_of(Hash)
     end
 
     it "should return ip record with location" do
-      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.169', return_ip_location: true)
+      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.228', return_ip_location: true)
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
       expect(result['data']['ip']['location']).to be_an_instance_of(Hash)
     end
 
     it "should return ip record with metadata" do
-      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.169', return_ip_metadata: true)
+      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.228', return_ip_metadata: true)
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
       expect(result['data']['ip']['metadata']).to be_an_instance_of(Hash)
     end
 
     it "should return ip record with person" do
-      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.169', return_person: true)
+      result = Peopledatalabs::Enrichment.ip(ip: '72.212.42.228', return_person: true)
       expect(result['status']).to eq(200)
       expect(result).to be_an_instance_of(Hash)
       expect(result['data']['person']).to be_an_instance_of(Hash)
