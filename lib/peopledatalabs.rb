@@ -11,6 +11,7 @@ require 'peopledatalabs/resources/identify'
 require 'peopledatalabs/resources/retrieve'
 require 'peopledatalabs/resources/bulk'
 require 'peopledatalabs/resources/jobtitle'
+require 'peopledatalabs/resources/jobposting'
 require 'peopledatalabs/resources/changelog'
 
 

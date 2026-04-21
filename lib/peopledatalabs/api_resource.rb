@@ -69,6 +69,11 @@ module Peopledatalabs
           'status' => 400,
           'message' => "Missing Params"
         }
+      elsif path.include? '/job_posting/search'
+        # job_posting search supports either an Elasticsearch query body OR
+        # field-based filters, so neither :query nor :sql is required here.
+        # The empty-params guard above and the resource's own kwargs check
+        # cover the no-input case.
       elsif path.include? '/search'
         query = params['sql'] || params['query']
         result = { 'status' => 400, 'message' => 'Missing searchQuery' } unless query
