@@ -38,6 +38,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.12"
 
-  spec.add_runtime_dependency "http", "~> 5.1"
+  spec.add_runtime_dependency "http", ">= 5.1", "< 7.0"
   spec.add_runtime_dependency "forwardable", "~> 1.3"
 end
